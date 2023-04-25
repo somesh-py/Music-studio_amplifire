@@ -197,7 +197,7 @@
     <main>
     
       <div style="margin-left:300px;">
-       <form method="post" action="/registersong/">
+       <form method="post" action="/registersong/" enctype="multipart/form-data">
         {% csrf_token %}
         <label style="color:silver;">Song Name</label>
         <input type="text" name="name" style="width:400px;margin-left:50px;"/><br><br>

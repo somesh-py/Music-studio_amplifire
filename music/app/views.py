@@ -28,7 +28,7 @@ def registersongform(request):
 #         duration = request.POST['duration']
 #         album = request.POST['album']
 
-#         song = MusicReg.objects.create(name=name, artist=artist, release_date=relese_date,
+#         MusicReg.objects.create(name=name, artist=artist, release_date=relese_date,
 #                                        genre=genre, audio=audio, image=image, duration=duration, album=album)
 #         return redirect('/')
 
