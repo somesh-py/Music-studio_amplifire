@@ -10,5 +10,5 @@ class MusicReg(models.Model):
     genre=models.CharField(max_length=100)
     audio=models.FileField(upload_to='song')
     image=models.ImageField(upload_to='songimage')
-    duration=models.DurationField()
+    duration=models.CharField(max_length=50)
     album=models.CharField(max_length=100)

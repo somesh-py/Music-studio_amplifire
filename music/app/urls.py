@@ -8,7 +8,7 @@ urlpatterns = [
     path('',views.index),
     path('song/<int:id>',views.song,name='song'),
     path('registersongform',views.registersongform,name="registersongform"),
-    # path('registersong/',views.registersong),
+    path('registersong/',views.registersong),
 
     # api path urls
 
