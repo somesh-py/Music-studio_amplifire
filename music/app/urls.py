@@ -9,7 +9,9 @@ urlpatterns = [
     path('song/<int:id>',views.song,name='song'),
     path('registersongform',views.registersongform,name="registersongform"),
     path('registersong/',views.registersong),
-
+    path('playlistdata/<int:id>',views.playlistadd,name="playlistdata"),
+    path('playlist/',views.playlist),
+    path('removesong/<int:id>',views.removesong,name="removesong"),
     # api path urls
 
     path('api/',apiviews.ListCreateAPIView.as_view()),

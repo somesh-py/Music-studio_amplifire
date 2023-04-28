@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import MusicReg
+from .models import MusicReg,Playlist
 # Create your views here.
 
 
@@ -32,3 +32,15 @@ def registersong(request):
                                        genre=genre, audio=audio, image=image, duration=duration, album=album)
         return redirect('/')
 
+def playlist(request):
+    song=Playlist.objects.all()
+    return render(request,'playlist.html',{'song':song})
+
+def playlistadd(request,id):
+    song=MusicReg.objects.get(id=id)
+    data=Playlist.objects.create(song=song)
+    return redirect('/playlist/')
+
+def removesong(request,id):
+    Playlist.objects.filter(song_id=id).delete()
+    return redirect('/playlist/')

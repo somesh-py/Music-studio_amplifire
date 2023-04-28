@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <style>
   .centered(@position: absolute) {
@@ -193,49 +194,29 @@
 </style>
 
 <body>
+    <a href="/"><button type="button" class="btn btn-secondary" style="margin-top:10px;margin-left:10px;">Go To Main Menu</button></a>
   {% if song %}
-  <div class="container" style="width:600px;margin-left:350px;margin-top:50px;">
+  <div class="container" style="margin-top:25px;">
     <header>
       <div class="playlist">
-        <i class="fa fa-bars"></i>
-      </div>
-      <div class="setting">
-        <i class="fa fa-cog"></i>
       </div>
     </header>
     <main>
-      <div class="album-art">
-        <img src="{{song.image.url}}" alt="" style="height:300px;" width="250px" />
+    {% if song %}
+    {% for i in song %}
+      <div class="album-art" style="width:100%;height:100px;">
+      <img src="{{i.song.image.url}}" alt="images" style="height:90px;width:100px;"/>
+      <h4 style="color:white;margin-left:150px; margin-top:-70px;">{{i.song.name}}</h4>
+      <h4 style="color:white;margin-left:145px;">{{i.song.artist}}</h4>
+      <a href="{% url 'song' i.id %}"><i class="fa fa-play-circle-o fa-4x" aria-hidden="true" style="color:white; position: absolute;margin-left:900px;margin-top:-80px;"></i></a>
+      <a href="{% url 'removesong' i.song.id %}"><i class="fa fa-times fa-4x" aria-hidden="true" style="color:white; position: absolute;margin-left:980px;margin-top:-80px;"></i></a>
       </div>
-      <div style="margin-left:300px;">
-        <label style="color:silver;">Artist</label>
-        <h3 style="color:silver;">{{song.artist}}</h3>
-
-        <label style="color:silver;">Release Date</label>
-        <h3 style="color:silver;margin-top:0px;">{{song.release_date}}</h3>
-
-        <label style="color:silver;">Genre</label>
-        <h3 style="color:silver;margin-top:0px;">{{song.genre}}</h3>
-
-        <label style="color:silver;">Album</label>
-        <h3 style="color:silver;margin-top:0px;">{{song.album}}</h3>
-      </div>
-      <div class="player">
-        <i class="fa fa-repeat"></i>
-        <i class="fa fa-fast-backward"></i>
-        <i class="fa fa-play"></i>
-        <i class="fa fa-fast-forward"></i>
-        <i class="fa fa-random"></i>
-      </div>
-      <audio src="{{song.audio.url}}" controls class="btn btn-outline-dark" style="width:500px;margin-top:50px;"></audio>
+    {% endfor %}
+    {% endif %}
     </main>
     <footer>
-      <div class="title">{{song.name}}
     </footer>
   </div>
-  <a href="{{song.audio.url}}" download><button type="submit" class="btn btn-secondary" style="width:200px;margin-left:1100px;margin-top:-1200px;">Download Song</button></a>
-  <a href="/"><button type="submit" class="btn btn-secondary" style="width:200px;margin-left:1100px;margin-top:-1100px;">Go To Main Menu</button></a>
-  <a href="{% url 'playlistdata' song.id %}"><button type="submit" class="btn btn-secondary" style="width:200px;margin-left:1100px;margin-top:-1000px;">Add Song To Playlist</button></a>
   {% endif %}
 </body>
 
